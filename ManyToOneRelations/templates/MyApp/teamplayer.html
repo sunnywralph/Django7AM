@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Many-to-One Relations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <h2 style="color:#fff">ManyToOne Relations</h2>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {% for instance in items %}
+                <h2>{{instance.tname}}:</h2>
+                {% for player in instance.player_set.all %}{{player.pname}}<br>
+                {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

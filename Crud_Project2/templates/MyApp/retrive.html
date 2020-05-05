@@ -1,0 +1,21 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Retrive Data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="col-md-offset-3 col-md-6">
+    <div class="page-header">
+        <h1><a href="{% url 'home' %}" class="top-menu">Companies list</a></h1>
+    </div>
+    <h3><u>{{instance.company_name}} details</u></h3>
+    <h4>company id :{{ instance.id }}</h4><br/>
+    <h4>company image :<img src='{{instance.company_logo.url}}'/></h4><br/>
+    <h4>company city :{{ instance.company_city }}</h4><br/>
+</div>
+</body>
+</html>

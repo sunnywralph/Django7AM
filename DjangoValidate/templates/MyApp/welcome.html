@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FORMS WITH BOOTSTRAP FRAMEWORK</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="{% static 'css/MyFile.css' %}" rel="stylesheet">
+</head>
+<body>
+    <h2>EMP Registration Form</h2>
+    <div class="container" align="center">
+        <form method="post">
+            {{ form.as_p }}
+                {% csrf_token %}
+            <input type="submit" value="NewEmp"
+        </form>
+    </div>
+</body>
+</html>

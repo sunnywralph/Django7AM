@@ -1,0 +1,227 @@
+Model Based Form (MBF)
+1. We can create form based on Model, such type of forms are called MBF or Model Forms.
+2. Model FOrms is we can grab end User input and we can save that input data in the database.
+3. Django provides inbuilt support to develop model based forms easily.
+
+How to Develop MBF??
+1. While develop Form Class instead of inheriting forms.Form class, we have to inherit forms.ModelForm class. 
+2. We have to write one nesteed class (Meta Class) to specify Model Information & required fields.
+
+class EmpForm(forms.ModelForm):
+Field Declarations if we are performing any custom validations.
+
+
+class Meta:
+The use of Meta class is simply to provide metadata to the ModelForm class.
+
+class Meta:
+# We have to specify Model class name and required fields.
+model=Emp
+fields='__all__'
+
+Example for meta options:
+1. Model : Model class to use for creating Form
+2. fields : list to fields to include in the Form
+3. exclude : list of fields to exclude from the Form
+4. widgets : a dictionary of field-widget pairs
+
+CASE-1: Instead of all fields if we want only selected fields, then we have to specify in Tuple format:
+class Meta:
+	model=Emp
+	fields=('field1','field2','field3')#include
+
+Note-: 
+Int the form only 3 fields will be considered. If Model class contains huge number of fields in the form then we should use this approach.
+
+CASE-2: Instead of all fields if we want to exclude certain fields, then we have to specify in List format:
+
+class Meta:
+	model=Emp
+	fields=['field1','field2','field3']#exclude
+
+NOTE:-
+In the form all fields will be considered except field1, field2 and field3. If the Model class contains huge number of fields and if we want to exclude very few fields then we have to use this approach.
+
+In MBF, three ways we are specify Information in Fileds:
+1. All fields(__all__)
+2. Include certain fields(tuple)
+3. Exclude certain fields(list)
+
+LIVE PROJECT On MODEL BASED FORMS/Model Forms/ MBF:
+Step1:
+$django-damin startproject MBF
+$cd MBF
+$django-admin startapp WebApp
+
+Step2:
+Do required Settings, Installed Apps, templates & static folder configurations...!!
+
+Step3:models.py
+from django.db import models
+#create your views here
+class Emp(models.Model):
+	Name=models.CharField(max_length=30)
+	Salary=models.IntegerField()
+
+Step4: Do required Migrations
+$py manage.py makemigrations
+$py manage.py sqlmigrate WebApp 0001 {For MySQL}
+$py manage.py migrate
+
+Step5: admin.py
+from django.contrib import admin
+from WebApp.models import Emp
+#Register your mdels here
+class EmpAdmin(admin.ModelAdmin):
+	list_display=['Name','Salary']
+admin.site.register(Emp,EmpAdmin)
+
+Step6: Create SuperUser
+$py manage.py createsuperuser
+Enter User Name:Sunny
+Enter Email:sunnywralph@gmail.com
+Password:********
+Re-Password:*********
+Superuser Created Successfully...!!!!
+
+Step7: Run the Server and send the Request..
+http://127.0.0.1:8000/admin/
+Login and check the created Models and Tables. Don't Enter data manually, Enter data through the Form...!!!
+
+{Db Browser for SQLITE} install
+
+Step8: forms.py
+from django import forms
+from WebApp.models import Emp
+#Fields with Validations
+class EmpForm(forms.ModelForm):
+	class Meta:
+		model=Emp
+		fields='__all__'
+Note:
+The all() Method fetches all the records from th table.
+
+Step9: views.py
+from django.shortcuts import render
+from WebApp import forms
+from django.http import HttpResponseRedirect
+
+#create your views here
+def ThankView(request):
+	return render(request,'MyApp/Thanks.html')
+def Emp_View(request):
+	form=forms.EmpForm()
+	if request.method='POST':
+		form=forms.EmpForm(request.POST)
+		if form.is_valid():
+			form.save(commit=True)
+			return HttpResponseRedirect('/bye')
+	else:
+		form=forms.EmpForm()
+	return render(request,'MyApp/Welcome.html',{'form',form})
+
+Step10: Welcome.html
+
+Step11: Thanks.html {Add Click ME Hyperlink to redirect to welcome.html
+
+Step12: MyFile.css
+Step13: urls.py
+from django.contrib import admin
+from django.urls import path
+from WebApp import views
+urlpatterns=[
+	path('admin',admin.site.urls),
+	path('regis',views.Emp_View),
+	path('bye',views.ThankView),
+]
+
+Step14: Send the request to server https://127.0.0.1:8000/regis
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

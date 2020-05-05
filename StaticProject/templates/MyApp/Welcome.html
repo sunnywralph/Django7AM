@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Static Resources</title>
+    <link href="{% static 'css/MyFile.css' %}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Welcome To Static Projects In Django..!!</h1>
+{{ wish }}
+{{ name }}
+<h2>Current System Date&Time..!!! {{ dt_now }}</h2>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data" >
+    {% csrf_token%}
+    <input type="file" name="file">
+    <button type="submit">upload</button>
+</form>
+
+{% if uploadedfileurl %}
+
+<p>file uploaded at: <a href="{{'uploadedfileurl'}}">{{ uploadedfileurl }}</a> </p>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Relations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <h2 style="color:#fff">OneToOne Relations</h2>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {% for i in items %}
+                <p>{{i.sname}}:{{i.capitalcity.cname}}</p>
+                {% endfor %}
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

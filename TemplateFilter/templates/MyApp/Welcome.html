@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<head>
+	<meta charset="UTF-8">
+	<title>Django Template Filters</title>
+	<link href="{% static 'css/File.css' %}" rel="stylesheet">
+</head>
+<body>
+{% for item in datalist %}
+<ul>
+	<li>{{item.name|upper}}</li>
+	<li>{{item.subject}}</li>
+	<li>{{item.dept|title}}</li>
+	<li>{{item.date}}</li>
+</ul><hr>
+{% endfor %}
+</body>
+</html>
